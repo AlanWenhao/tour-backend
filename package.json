@@ -1,0 +1,32 @@
+{
+  "name": "tour-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanWenhao/tour-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanWenhao/tour-backend/issues"
+  },
+  "homepage": "https://github.com/AlanWenhao/tour-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.4",
+    "jsonwebtoken": "^8.3.0",
+    "koa": "^2.6.1",
+    "koa-router": "^7.4.0",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  }
+}
