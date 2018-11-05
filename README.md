@@ -1,6 +1,6 @@
 # tour-backend
 
-[中文文档]('https://github.com/AlanWenhao/tour-backend/blob/master/README-zh.md')
+[中文文档](https://github.com/AlanWenhao/tour-backend/blob/master/README-zh.md)
 ## how to start
 ```
 1.change `config.js` to match you local mySql database connection setting
