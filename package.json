@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "create": "node lib/createTables.js",
     "start": "nodemon app.js"
   },
   "repository": {
@@ -22,7 +23,9 @@
     "cors": "^2.8.4",
     "jsonwebtoken": "^8.3.0",
     "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
+    "moment": "^2.22.2",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0"
   },

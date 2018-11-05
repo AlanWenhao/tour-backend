@@ -2,12 +2,10 @@
  * 注册
  */
 const Router = require('koa-router');
-// const controller = require('');
+const signupModel = require('../model/signup');
 
 const router = new Router();
 
-router.post('/signup', async (ctx) => {
-
-});
+router.post('/signup', signupModel);
 
 module.exports = router;
