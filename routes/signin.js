@@ -2,13 +2,11 @@
  * 登录
  */
 const Router = require('koa-router');
-const model = require('../lib/mysql');
+const signinModel = require('../model/signin');
 // const controller = require('');
 
 const router = new Router();
 
-router.post('/signin', async (ctx) => {
-
-});
+router.post('/signin', signinModel);
 
 module.exports = router;

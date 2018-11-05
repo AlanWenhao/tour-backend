@@ -7,7 +7,6 @@ const { SECRET_KEY } = require('../config');
 const sign = (payload) => {
     // see https://www.npmjs.com/package/jsonwebtoken#jwtsignpayload-secretorprivatekey-options-callback
     // default algorithm HS256
-    console.log('payload is', payload);
     return jwt.sign(payload, SECRET_KEY, {
         expiresIn: 3600
     });
