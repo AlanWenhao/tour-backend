@@ -2,10 +2,11 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const { insertData, findUserData } = require('../lib/mysql');
 
-const signupModel = async (ctx, next) => {
+const signupModel = async (ctx) => {
     let { username, password, avatar, isAdmin } = ctx.request.body;
 
     const sameUsers = await findUserData(username);
+    console.log(sameUsers);
     if (sameUsers.length) {
         ctx.body = {
             code: 500,
@@ -20,6 +21,7 @@ const signupModel = async (ctx, next) => {
 
                     let defaultAvatar = 'https://via.placeholder.com/150x150'
                     if (avatar) defaultAvatar = avatar;
+                    console.log('收到的数据', username);
 
                     try {
                         await insertData([username, hash, '0', defaultAvatar, moment().format('YYYY-MM-DD HH:mm:ss')]);

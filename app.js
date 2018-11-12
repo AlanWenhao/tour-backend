@@ -1,14 +1,14 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+const cors = require('koa2-cors');
 const config = require('./config');
-const resBodyMiddware = require('./middlewares/methods');
+
 const signinRouter = require('./routes/signin');
 const signupRouter = require('./routes/signup');
 
 const app = new Koa();
-
+app.use(cors());
 app.use(bodyParser());
-// app.use(resBodyMiddware());
 
 app.use(signinRouter.routes());
 app.use(signupRouter.routes());
