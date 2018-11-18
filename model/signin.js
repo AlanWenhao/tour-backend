@@ -7,18 +7,19 @@ const comparePassword = (password, hash) => {
 }
 
 const signinModel = async (ctx) => {
+    console.log(ctx.body);
     const { username, password } = ctx.request.body;
     const doc = await findUserData(username);
+    console.log(doc);
     if (doc.length === 0) {
         ctx.body = {
             code: 500,
             message: '该用户不存在'
         }
     } else {
-        if (comparePassword(password, doc[0].pass)) {
+        if (comparePassword(password, doc[0].password)) {
             const jwtToken = sign({
                 username: doc[0].username,
-                password: doc[0].pass,
                 isAdmin: doc[0].is_admin,
                 avatar: doc[0].avatar,
                 moment: doc[0].moment

@@ -10,7 +10,7 @@ const signupModel = async (ctx) => {
     if (sameUsers.length) {
         ctx.body = {
             code: 500,
-            data: '该用户已经存在'
+            message: '该用户已经存在'
         }
     } else { // 加密密码并插入数据
         await new Promise((resolve, reject) => {
