@@ -8,7 +8,7 @@
 2.install the dependences
 $ npm install
 
-3.create tables
+3.create tables, make sure that you've set the database which in config.js
 $ npm run create
 
 4.start node application

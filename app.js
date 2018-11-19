@@ -5,6 +5,8 @@ const config = require('./config');
 
 const signinRouter = require('./routes/signin');
 const signupRouter = require('./routes/signup');
+const categoryRouter = require('./routes/category');
+const articleRouter = require('./routes/article');
 
 const app = new Koa();
 app.use(cors());
@@ -12,6 +14,8 @@ app.use(bodyParser());
 
 app.use(signinRouter.routes());
 app.use(signupRouter.routes());
+app.use(categoryRouter.routes());
+app.use(articleRouter.routes());
 
 app.listen(config.PORT, () => {
     console.log(`server is runing on http://${config.HOST}:${config.PORT}`);
