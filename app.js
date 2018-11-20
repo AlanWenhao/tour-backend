@@ -3,6 +3,8 @@ const bodyParser = require('koa-bodyparser');
 const cors = require('koa2-cors');
 const config = require('./config');
 
+const ctxBodyMiddleWare = require('./middlewares/ctxBody');
+
 const signinRouter = require('./routes/signin');
 const signupRouter = require('./routes/signup');
 const categoryRouter = require('./routes/category');
@@ -11,6 +13,7 @@ const articleRouter = require('./routes/article');
 const app = new Koa();
 app.use(cors());
 app.use(bodyParser());
+app.use(ctxBodyMiddleWare);
 
 app.use(signinRouter.routes());
 app.use(signupRouter.routes());

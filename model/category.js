@@ -6,14 +6,14 @@ exports.addCategoryModel = async (ctx) => {
         await varify(ctx, true);
     } catch (err) {
         console.log('category捕获的认证错误：', err);
-        return ctx.body = { code: 500, message: err };
+        return ctx.error(err);
     }
 
     const { name } = ctx.request.body;
     try {
         await insertCategory([name]);
-        ctx.body = { code: 200, data: '' };
+        ctx.success('');
     } catch(err) {
-        ctx.body = { code: 500, message: err };
+        ctx.error(err);
     }
 }
