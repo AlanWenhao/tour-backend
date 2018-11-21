@@ -1,28 +1,18 @@
-const data = (ctx, code) => {
-    if (code === 200) {
-        return (data) => {
-            return ctx.body = {
-                code: code,
-                data
-            }
-        }
-    } else {
-        return (msg) => {
-            return ctx.body = {
-                code: code,
-                msg
-            }
+const data = (ctx) => {
+    return (data, code) => {
+        return ctx.body = {
+            code: code,
+            data
         }
     }
-        
 }
 
 module.exports = async (ctx, next) => {
     if (!ctx.success) {
-        ctx.success = data(ctx, 200);
+        ctx.success = data(ctx);
     }
     if (!ctx.error) {
-        ctx.error = data(ctx, 500);
+        ctx.error = data(ctx);
     }
     await next();
 }

@@ -15,5 +15,13 @@ $ npm run create
 $ npm run start` or just `npm start
 ```
 
+## response data code
+- success
+    - 200
+- error
+    - 400 客户端参数有错误
+    - 401 token认证错误
+    - 500 服务端错误
+
 ## mockup
 [Koa2-blog](https://github.com/wclimb/Koa2-blog)  
