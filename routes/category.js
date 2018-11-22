@@ -1,14 +1,16 @@
 /**
  * 增删改查文章类别
  */
-const { addCategoryModel } = require('../model/category');
+const { addCategoryModel, deleteCategoryModel, queryCategoryModel, editCategoryModel } = require('../model/category');
 const varify = require('../middlewares/varify');
 
 const Router = require('koa-router');
-const model = require('../lib/mysql');
 
 const router = new Router();
 
 router.post('/addCategory', varify(true),  addCategoryModel);
+router.post('/deleteCategory', varify(true), deleteCategoryModel);
+router.post('/queryCategory', varify(false), queryCategoryModel);
+router.post('/editCategory', varify(true), editCategoryModel);
 
 module.exports = router;
