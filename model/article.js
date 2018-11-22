@@ -8,7 +8,7 @@ exports.addArticleModel = async (ctx) => {
     const pv = 0;
     const thumb = 0;
     await insertArticle([categoryId, title, author, summary, content, moment, pv, thumb]);
-    return ctx.success('');
+    return ctx.success('添加文章成功', 200);
 }
 
 exports.deleteArticle = async () => {
