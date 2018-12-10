@@ -1,3 +1,4 @@
+const momentjs = require('moment');
 const { varify, decode } = require('../utils/jwt');
 const { insertArticle, updateArticle, deleteArticle,
         queryAuthorCateArticles, queryAuthorArticles, queryCateArticles, queryArticles,
@@ -9,8 +10,9 @@ const { insertArticle, updateArticle, deleteArticle,
  */
 exports.addArticleModel = async (ctx) => {
     const jwtToken = ctx.headers.authorization; // 客户端发送的token
-    const { categoryId, title, summary, content, moment } = ctx.request.body;
+    const { categoryId, title, summary, content } = ctx.request.body;
     const author = decode(jwtToken).username;
+    const moment = momentjs().format('L');
     const pv = 0;
     const thumb = 0;
     await insertArticle([categoryId, title, author, summary, content, moment, pv, thumb]);
