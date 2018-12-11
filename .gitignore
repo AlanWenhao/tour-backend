@@ -1,5 +1,6 @@
 node_modules/
 dist/
+upload/
 .vscode
 package-lock.json
 .DS_store

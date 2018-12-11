@@ -8,7 +8,7 @@ exports.sign = (payload) => {
     // see https://www.npmjs.com/package/jsonwebtoken#jwtsignpayload-secretorprivatekey-options-callback
     // default algorithm HS256
     return jwt.sign(payload, SECRET_KEY, {
-        expiresIn: 3600
+        expiresIn: 36000
     });
 }
 
