@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AlanWenhao/tour-backend#readme",
   "dependencies": {
+    "async-busboy": "^0.7.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.4",
     "formidable": "^1.2.1",
