@@ -7,10 +7,8 @@ const comparePassword = (password, hash) => {
 }
 
 const signinModel = async (ctx) => {
-    console.log(ctx.body);
     const { username, password } = ctx.request.body;
     const doc = await findUserData(username);
-    console.log(doc);
     if (doc.length === 0) {
         ctx.body = {
             code: 500,
