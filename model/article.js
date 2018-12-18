@@ -3,7 +3,7 @@ const { varify, decode } = require('../utils/jwt');
 const { insertArticle, updateArticle, deleteArticle,
         queryAuthorCateArticles, queryAuthorArticles, queryCateArticles, queryArticles,
         queryAuthorCateArtNum, queryAuthorArtNum, queryCateArtNum, queryArtNum,
-        queryArticleNum } = require('../lib/mysql');
+        queryArticleNum, queryArticleById } = require('../lib/mysql');
 
 /**
  * 新增文章
@@ -78,7 +78,19 @@ exports.queryArticlesModel = async (ctx) => {
     } catch (err) {
         ctx.error(err, 500);
     }
+}
 
+/**
+ * 根据id查询文章
+ */
+exports.queryArticleByIdModel = async (ctx) => {
+    const { id } = ctx.request.body;
+    try {
+        const res = await queryArticleById(id);
+        ctx.success(res[0], 200);
+    } catch (err) {
+        ctx.error(err, 500);
+    }
 }
 
 /**
