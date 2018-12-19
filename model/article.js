@@ -3,7 +3,7 @@ const { varify, decode } = require('../utils/jwt');
 const { insertArticle, updateArticle, deleteArticle,
         queryAuthorCateArticles, queryAuthorArticles, queryCateArticles, queryArticles,
         queryAuthorCateArtNum, queryAuthorArtNum, queryCateArtNum, queryArtNum,
-        queryArticleNum, queryArticleById } = require('../lib/mysql');
+        queryArticleNum, queryArticleById, plusViewTime, plusThumb } = require('../lib/mysql');
 
 /**
  * 新增文章
@@ -104,5 +104,33 @@ exports.queryAllArticlesModel = async (ctx) => {
         ctx.success({ list: result, total: count[0].count }, 200);
     } catch (err) {
         return ctx.error(err, 500);
+    }
+}
+
+/**
+ * 增加浏览量
+ */
+exports.plusViewTimeModel = async (ctx) => {
+    const { id } = ctx.request.body;
+    console.log('发送来的数据：', ctx.request.body);
+    try {
+        await plusViewTime(id);
+        ctx.success(null, 200);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+/**
+ * 点赞
+ */
+exports.thumbModel = async (ctx) => {
+    const { id } = ctx.request.body;
+    console.log('发送来的数据：', ctx.request.body);
+    try {
+        await plusThumb(id);
+        ctx.success(null, 200);
+    } catch (err) {
+        console.log(err);
     }
 }

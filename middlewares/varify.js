@@ -21,10 +21,10 @@ module.exports = (mustAdmin) => async (ctx, next) => {
             }
         } catch (err) {
             console.log('错误', err);
-            if (err.name === 'TokenExpiredError')  return ctx.error('token过期', 401);
+            if (err.name === 'TokenExpiredError')  return ctx.error('登录过期，请重新登录', 401);
             else return ctx.error('无效token', 401);
         }
     } else {
-        return ctx.error('请提供token', 401);
+        return ctx.error('请登录后操作', 401);
     }
 }

@@ -1,7 +1,8 @@
 /**
  * 增删改查文章
  */
-const { addArticleModel, queryArticlesModel, deleteArticleModel, queryArticleByIdModel }  = require('../model/article');
+const { addArticleModel, queryArticlesModel, deleteArticleModel, queryArticleByIdModel,
+    plusViewTimeModel, thumbModel }  = require('../model/article');
 const varify = require('../middlewares/varify');
 
 const Router = require('koa-router');
@@ -13,5 +14,8 @@ router.post('/addArticle', varify(false), addArticleModel);
 router.post('/deleteArticle', varify(false), deleteArticleModel);
 router.post('/queryArticleById', queryArticleByIdModel);
 router.post('/queryArticles', queryArticlesModel);
+
+router.post('/plusViewTime', plusViewTimeModel);
+router.post('/thumb', varify(false), thumbModel);
 
 module.exports = router;
