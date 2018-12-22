@@ -112,7 +112,6 @@ exports.queryAllArticlesModel = async (ctx) => {
  */
 exports.plusViewTimeModel = async (ctx) => {
     const { id } = ctx.request.body;
-    console.log('发送来的数据：', ctx.request.body);
     try {
         await plusViewTime(id);
         ctx.success(null, 200);
@@ -126,7 +125,6 @@ exports.plusViewTimeModel = async (ctx) => {
  */
 exports.thumbModel = async (ctx) => {
     const { id } = ctx.request.body;
-    console.log('发送来的数据：', ctx.request.body);
     try {
         await plusThumb(id);
         ctx.success(null, 200);

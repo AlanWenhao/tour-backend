@@ -1,14 +1,16 @@
 const { insertCategory, deleteCategory, queryCategory, editCategory } = require('../lib/mysql');
+const staticUrl = require('../utils/static-url');
 
 /**
  * 新增分类
  */
 exports.addCategoryModel = async (ctx) => {
     const { name } = ctx.request.body;
+    const picture = staticUrl();
     const categoryArr = await queryCategory(name);
     if (categoryArr.length > 0) return ctx.error('该类目已存在', 400);
     try {
-        const res = await insertCategory([name]);
+        const res = await insertCategory([name, picture]);
         console.log(res);
     } catch(err) {
         return ctx.error(err, 500);
