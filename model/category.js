@@ -15,7 +15,7 @@ exports.addCategoryModel = async (ctx) => {
     } catch(err) {
         return ctx.error(err, 500);
     }
-    ctx.success('');
+    ctx.success('', 200);
 }
 
 /**
