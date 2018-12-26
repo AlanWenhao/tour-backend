@@ -1,4 +1,4 @@
-const { insertCategory, deleteCategory, queryCategory, editCategory } = require('../lib/mysql');
+const { insertCategory, deleteCategory, queryCategory, editCategory, deleteArticleByCate } = require('../lib/mysql');
 const staticUrl = require('../utils/static-url');
 
 /**
@@ -28,6 +28,7 @@ exports.deleteCategoryModel = async (ctx) => {
         if (res.affectedRows === 0) {
             return ctx.error('删除失败，请核对id', 400);
         }
+        await deleteArticleByCate(id);
     } catch (err) {
         return ctx.error(err, 500);
     }
