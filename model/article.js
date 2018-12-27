@@ -1,6 +1,7 @@
 const momentjs = require('moment');
 const { varify, decode } = require('../utils/jwt');
-const { insertArticle, updateArticle, deleteArticle,
+const staticUrl = require('../utils/static-url');
+const { insertArticle, updateArticle, deleteArticle, queryCategoryById,
         queryAuthorCateArticles, queryAuthorArticles, queryCateArticles, queryArticles,
         queryAuthorCateArtNum, queryAuthorArtNum, queryCateArtNum, queryArtNum,
         queryArticleNum, queryArticleById, plusViewTime, plusThumb } = require('../lib/mysql');
@@ -10,12 +11,14 @@ const { insertArticle, updateArticle, deleteArticle,
  */
 exports.addArticleModel = async (ctx) => {
     const jwtToken = ctx.headers.authorization; // 客户端发送的token
-    const { categoryId, title, summary, content } = ctx.request.body;
+    const { categoryId, title, poster, summary, content } = ctx.request.body;
+    const categoryList = await queryCategoryById(categoryId);
     const author = decode(jwtToken).username;
-    const moment = momentjs().format('L');
+    const moment = momentjs().format('YYYY-MM-DD');
     const pv = 0;
     const thumb = 0;
-    await insertArticle([categoryId, title, author, summary, content, moment, pv, thumb]);
+    const finalPoster = poster ? poster : staticUrl();
+    await insertArticle([categoryId, categoryList[0].name, title, finalPoster, author, summary, content, moment, pv, thumb]);
     return ctx.success('添加文章成功', 200);
 }
 

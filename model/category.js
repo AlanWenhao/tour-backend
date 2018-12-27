@@ -11,7 +11,6 @@ exports.addCategoryModel = async (ctx) => {
     if (categoryArr.length > 0) return ctx.error('该类目已存在', 400);
     try {
         const res = await insertCategory([name, picture]);
-        console.log(res);
     } catch(err) {
         return ctx.error(err, 500);
     }
@@ -41,7 +40,6 @@ exports.deleteCategoryModel = async (ctx) => {
 exports.queryCategoryModel = async (ctx) => {
     try {
         const res =  await queryCategory();
-        console.log('查询到的分类', res);
         return ctx.success(res, 200);
     } catch (err) {
         console.log('查询捕获错误', err);
