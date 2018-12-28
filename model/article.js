@@ -3,6 +3,7 @@ const { varify, decode } = require('../utils/jwt');
 const staticUrl = require('../utils/static-url');
 const { insertArticle, updateArticle, deleteArticle, queryCategoryById,
         queryAuthorCateArticles, queryAuthorArticles, queryCateArticles, queryArticles,
+        queryHotArticles,
         queryAuthorCateArtNum, queryAuthorArtNum, queryCateArtNum, queryArtNum,
         queryArticleNum, queryArticleById, plusViewTime, plusThumb } = require('../lib/mysql');
 
@@ -91,6 +92,15 @@ exports.queryArticleByIdModel = async (ctx) => {
     try {
         const res = await queryArticleById(id);
         ctx.success(res[0], 200);
+    } catch (err) {
+        ctx.error(err, 500);
+    }
+}
+
+exports.queryHotArticlesModel = async (ctx) => {
+    try {
+        const res = await queryHotArticles();
+        ctx.success(res, 200);
     } catch (err) {
         ctx.error(err, 500);
     }
