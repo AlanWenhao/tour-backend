@@ -10,7 +10,7 @@ const router = new Router();
 
 router.post('/addCategory', varify(true),  addCategoryModel);
 router.post('/deleteCategory', varify(true), deleteCategoryModel);
-router.post('/queryCategory', varify(false), queryCategoryModel);
+router.post('/queryCategory', queryCategoryModel);
 router.post('/editCategory', varify(true), editCategoryModel);
 
 module.exports = router;
