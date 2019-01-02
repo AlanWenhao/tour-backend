@@ -1,5 +1,5 @@
 const momentjs = require('moment');
-const { varify, decode } = require('../utils/jwt');
+const { decode } = require('../utils/jwt');
 const staticUrl = require('../utils/static-url');
 const { insertArticle, updateArticle, deleteArticle, queryCategoryById,
         queryAuthorCateArticles, queryAuthorArticles, queryCateArticles, queryArticles,
