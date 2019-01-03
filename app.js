@@ -13,6 +13,7 @@ const signupRouter = require('./routes/signup');
 const categoryRouter = require('./routes/category');
 const articleRouter = require('./routes/article');
 const commentRouter = require('./routes/comment');
+const userRouter = require('./routes/user');
 const uploadRouter = require('./routes/upload');
 
 
@@ -33,6 +34,7 @@ app.use(signupRouter.routes());
 app.use(categoryRouter.routes());
 app.use(articleRouter.routes());
 app.use(commentRouter.routes());
+app.use(userRouter.routes());
 app.use(uploadRouter.routes());
 
 app.listen(config.PORT, () => {

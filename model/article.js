@@ -58,6 +58,7 @@ exports.deleteArticleModel = async (ctx) => {
  * 查询【用户】文章
  */
 exports.queryArticlesModel = async (ctx) => {
+    console.log(ctx.request.body);
     const { offset, limit, matchAuthor, categoryId }  = ctx.request.body;
     const jwtToken = ctx.headers.authorization; // 客户端发送的token
     const author = decode(jwtToken) ? decode(jwtToken).username : null;
@@ -80,6 +81,7 @@ exports.queryArticlesModel = async (ctx) => {
         }
         ctx.success({ list: result, total: count[0].count }, 200);
     } catch (err) {
+        console.log(err);
         ctx.error(err, 500);
     }
 }
